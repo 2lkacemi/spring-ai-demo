@@ -27,7 +27,7 @@ public class OcrService {
         byte[] data = resource.getContentAsByteArray();
         String userMessageText = """
                  Analyze the image containing handwritten text and provide,\040
-                 in JSON format, how the expenses are divided as written in the image""";
+                 in JSON format, how the expenses as written in the image""";
         UserMessage userMessage = new UserMessage(userMessageText, List.of(new Media(MimeTypeUtils.IMAGE_JPEG, data)));
         Prompt prompt = new Prompt(userMessage);
         return chatClient.call(prompt).getResult().getOutput().getContent();
