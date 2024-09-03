@@ -2,8 +2,10 @@ package com.rag.springaidemo.api;
 
 import com.rag.springaidemo.service.ChatService;
 import com.rag.springaidemo.service.ImageService;
+import com.rag.springaidemo.service.OcrService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.ai.image.ImageResponse;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,10 +17,12 @@ public class AiController {
 
     private final ChatService chatService;
     private final ImageService imageService;
+    private final OcrService ocrService;
 
-    public AiController(ChatService chatService, ImageService imageService) {
+    public AiController(ChatService chatService, ImageService imageService, OcrService ocrService) {
         this.chatService = chatService;
         this.imageService = imageService;
+        this.ocrService = ocrService;
     }
 
     @GetMapping("ask-ai")
@@ -42,5 +46,9 @@ public class AiController {
         response.sendRedirect(imageUrl);
     }
 
+    @GetMapping(value = "ocr", produces = MediaType.TEXT_PLAIN_VALUE)
+    public String ocr() throws IOException {
+        return ocrService.readImage();
+    }
 
 }

@@ -21,4 +21,5 @@ public class ImageService {
 
         return imageClient.call(new ImagePrompt(prompt, imageOptions));
     }
+
 }
