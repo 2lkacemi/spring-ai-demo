@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: spring-ai-demo
+  datasource:
+    url: jdbc:postgresql://localhost:5433/vectordb
+    username: postgres
+    password: postgres
+  ai:
+    openai:
+      chat:
+        options:
+          model: gpt-4-turbo
+      api-key: xxx
+
