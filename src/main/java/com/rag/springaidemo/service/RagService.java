@@ -46,7 +46,7 @@ public class RagService {
                 .createMessage(Map.of("CONTEXT", documentList));
         UserMessage userMessage = new UserMessage(query);
         Prompt prompt = new Prompt(List.of(systemMessage, userMessage));
-        OpenAiApi openAiApi = new OpenAiApi("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");
+        OpenAiApi openAiApi = new OpenAiApi("xxx");
         OpenAiChatOptions openAiChatOptions = OpenAiChatOptions.builder()
                 .withModel("gpt-4")
                 .build();
